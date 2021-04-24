@@ -41,21 +41,21 @@ String convertToString()
 {
    String convertedPacket;
    convertedPacket += String(packetInstance.rAnalogValue);
-   convertedPacket += ","
+   convertedPacket += ",";
    convertedPacket += String(packetInstance.gAnalogValue);
-   convertedPacket += ","
+   convertedPacket += ",";
    convertedPacket += String(packetInstance.bAnalogValue);
-   convertedPacket += ","
+   convertedPacket += ",";
    convertedPacket += String(packetInstance.tAnalogValue);
    convertedPacket += ","
    convertedPacket += String(packetInstance.xAnalogValue);
-   convertedPacket += ","
+   convertedPacket += ",";
    convertedPacket += String(packetInstance.yAnalogValue);
-   convertedPacket += ","
+   convertedPacket += ",";
    for(int i = 0; i<5; i++)
    {
       convertedPacket += String(packetInstance.buttonValue[i]);
-      convertedPacket += ","
+      convertedPacket += ",";
    }
    return convertedPacket;
 }
@@ -73,8 +73,10 @@ void loop(void){
   {
     //Read data from transmitter(Controller).
     radio.read(&packetInstance, sizeof(packet));      
-    debug(); //Write data to console.
+    //Convert struct to string for sending.
+    String convertedString = convertToString;
+    //Debug string.
+    Serial.println(convertedString);
     //Send data to processing application.
-    
   }
 }
