@@ -47,7 +47,7 @@ String convertToString()
    convertedPacket += String(packetInstance.bAnalogValue);
    convertedPacket += ",";
    convertedPacket += String(packetInstance.tAnalogValue);
-   convertedPacket += ","
+   convertedPacket += ",";
    convertedPacket += String(packetInstance.xAnalogValue);
    convertedPacket += ",";
    convertedPacket += String(packetInstance.yAnalogValue);
@@ -74,7 +74,7 @@ void loop(void){
     //Read data from transmitter(Controller).
     radio.read(&packetInstance, sizeof(packet));      
     //Convert struct to string for sending.
-    String convertedString = convertToString;
+    String convertedString = convertToString();
     //Debug string.
     Serial.println(convertedString);
     //Send data to processing application.
