@@ -37,6 +37,29 @@ void debug()
    Serial.println();
 }
 
+String convertToString()
+{
+   String convertedPacket;
+   convertedPacket += String(packetInstance.rAnalogValue);
+   convertedPacket += ","
+   convertedPacket += String(packetInstance.gAnalogValue);
+   convertedPacket += ","
+   convertedPacket += String(packetInstance.bAnalogValue);
+   convertedPacket += ","
+   convertedPacket += String(packetInstance.tAnalogValue);
+   convertedPacket += ","
+   convertedPacket += String(packetInstance.xAnalogValue);
+   convertedPacket += ","
+   convertedPacket += String(packetInstance.yAnalogValue);
+   convertedPacket += ","
+   for(int i = 0; i<5; i++)
+   {
+      convertedPacket += String(packetInstance.buttonValue[i]);
+      convertedPacket += ","
+   }
+   return convertedPacket;
+}
+
 void setup(void)
 {
  Serial.begin(9600);
@@ -48,7 +71,10 @@ void setup(void)
 void loop(void){
   if (radio.available())
   {
+    //Read data from transmitter(Controller).
     radio.read(&packetInstance, sizeof(packet));      
-    debug();
+    debug(); //Write data to console.
+    //Send data to processing application.
+    
   }
 }
