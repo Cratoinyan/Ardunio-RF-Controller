@@ -12,7 +12,7 @@ int[] xyCor = {0,0};
 int[] lineCor={0,0,0,0};
 int lineCtr = 0;
 
-// potantiometers
+// potantiometers that are used for color and thickness and coordinates
 int red, green, blue, thickness, xCor, yCor;
 int lastX = 1920/2,lastY = 1080/2;
 boolean isPressed, saveSwitch;
